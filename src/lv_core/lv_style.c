@@ -56,7 +56,28 @@ lv_style_t lv_style_btn_ina;
 /**********************
  *      MACROS
  **********************/
+/**
+ * Set the duration and delay of an animation
+ * @param a pointer to an initialized `lv_anim_t` variable
+ * @param duration duration of the animation in milliseconds
+ * @param delay delay before the animation in milliseconds
+ */
+static inline void lv_style_anim_set_time(lv_anim_t * a, uint16_t duration, uint16_t delay)
+{
+    lv_anim_set_time(a, duration, delay);
+}
 
+/**
+ * Set a function call when the animation is ready
+ * @param a pointer to an initialized `lv_anim_t` variable
+ * @param ready_cb a function call when the animation is ready
+ */
+static inline void lv_style_anim_set_ready_cb(lv_anim_t * a, lv_anim_ready_cb_t ready_cb)
+{
+    
+    lv_style_anim_dsc_t * dsc = a->var;
+    dsc->ready_cb = ready_cb;
+}
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/

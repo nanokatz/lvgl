@@ -220,6 +220,7 @@ int32_t lv_spinbox_get_value(lv_obj_t * spinbox)
     return ext->value;
 }
 
+
 /*=====================
  * Other functions
  *====================*/
@@ -384,8 +385,9 @@ static void lv_spinbox_updatevalue(lv_obj_t * spinbox)
     char * buf_p = buf;
 
     /*Add the sign*/
-    (*buf_p) = ext->value >= 0 ? '+' : '-';
-    buf_p++;
+    if (ext->value<0) 
+    {(*buf_p) =  '-';
+    buf_p++;}
 
     int i;
     /*padding left*/

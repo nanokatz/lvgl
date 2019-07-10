@@ -170,9 +170,6 @@ void lv_btnm_set_btn_width(const lv_obj_t * btnm, uint16_t btn_id, uint8_t width
 
 /**
  * Make the button matrix like a selector widget (only one button may be toggled at a time).
- *
- * Toggling must be enabled on the buttons you want to be selected with `lv_btnm_set_ctrl` or `lv_btnm_set_btn_ctrl_all`.
- *
  * @param btnm Button matrix object
  * @param one_toggle Whether "one toggle" mode is enabled
  */
@@ -220,6 +217,12 @@ const char * lv_btnm_get_active_btn_text(const lv_obj_t * btnm);
  */
 uint16_t lv_btnm_get_pressed_btn(const lv_obj_t * btnm);
 
+/**
+ * Get the index of the currently toggled btn
+ * @param btnm pointer to button matrix object
+ * @return  index of the toggled button (LV_BTNM_BTN_NONE: if unset)
+ */
+uint16_t lv_btnm_get_toggled_index(lv_obj_t * btnm);
 /**
  * Get the button's text
  * @param btnm pointer to button matrix object

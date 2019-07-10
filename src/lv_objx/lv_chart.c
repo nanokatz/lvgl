@@ -791,23 +791,31 @@ void lv_chart_set_yautoscale(const lv_obj_t * chart, bool en, lv_coord_t ymax_mi
  */
 void lv_chart_calc_ymax_value(const lv_obj_t * chart)
 {
-    
+    LV_LOG_TRACE("1");
     lv_chart_ext_t * ext = lv_obj_get_ext_attr(chart);
     ext->ymax_min=100;
      uint16_t i;
     int maxValue=0;
+    LV_LOG_INFO("2");
     lv_coord_t p_act;
     lv_chart_series_t * ser;
-    lv_coord_t start_point = ext->update_mode == LV_CHART_UPDATE_MODE_SHIFT ? ser->start_point : 0;
+    char buf[30];
     LV_LL_READ_BACK(ext->series_ll, ser) {
+    sprintf(buf,"SER START %d",ser->start_point);
+    LV_LOG_INFO(buf);
+    lv_coord_t start_point = ext->update_mode == LV_CHART_UPDATE_MODE_SHIFT ? ser->start_point : 0;
+    LV_LOG_INFO("3");
+    
         for(i = 0; i < ext->point_cnt; i++) {
             p_act = (start_point + i) % ext->point_cnt;
             if(ser->points[p_act]>maxValue) maxValue=ser->points[p_act];
-            
+           
         }
     }
+    LV_LOG_INFO("5");
     if(maxValue<ext->ymax_min) maxValue=ext->ymax_min;
     ext->ymax=maxValue;
+    LV_LOG_INFO("6");
 }
 /**
  * Draw the data lines as points on a chart

@@ -149,6 +149,7 @@ static inline const lv_style_t * lv_spinbox_get_style(lv_obj_t * spinbox, lv_spi
  */
 int32_t lv_spinbox_get_value(lv_obj_t * spinbox);
 
+
 /*=====================
  * Other functions
  *====================*/
